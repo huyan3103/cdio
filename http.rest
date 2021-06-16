@@ -1,0 +1,17 @@
+GET http://localhost:5000
+#####
+POST http://localhost:5000/employer/signup/
+Content-Type: multipart/form-data
+
+
+{
+    "username": "nguyenminh1",
+    "password": "asdasdasdasd"
+}
+########
+POST http://localhost:5000/hire/
+Content-Type: application/json
+
+{
+    "test": "asdasdasdsd"
+}

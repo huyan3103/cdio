@@ -1,0 +1,7 @@
+.comment-item {
+  display: flex;
+}
+
+.comment-item > p {
+  margin-right: 20px;
+}
