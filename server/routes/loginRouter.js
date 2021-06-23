@@ -12,11 +12,11 @@ router.post("/", async (req, res) => {
       switch (account.role) {
         case "employee": {
           const user = await Employee.findOne({ accountId: req.body.username })
-          res.status(200).json({ user, role: "employee" })
+          res.status(200).json({ user, role: "employee", success: 0 })
         }
         case "employer": {
           const user = await Employer.findOne({ accountId: req.body.username })
-          res.status(200).json({ user, role: "employer" })
+          res.status(200).json({ user, role: "employer", success: 0 })
         }
       }
     } else res.json({ success: 2 })

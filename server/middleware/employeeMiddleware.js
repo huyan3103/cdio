@@ -18,21 +18,34 @@ function getImgUrl(file) {
 
 const updateInfo = async (req, res, next) => {
   try {
-    const url = await getImgUrl(req.file)
-    const employeeInfor = new Employee({
-      name: req.body.name,
-      address: req.body.address,
-      phone: req.body.phone,
-      mail: req.body.mail,
-      description: req.body.description,
-      image: url,
-      accountId: req.body.username,
-    })
-    await employeeInfor.save()
-    next()
+    if (req.success) {
+      const url = await getImgUrl(req.file)
+      const employeeInfor = new Employee({
+        name: `${req.body.firstName} ${req.body.lastName}`,
+        address: `${req.body.district}, ${req.body.city}`,
+        phone: req.body.phone,
+        mail: req.body.mail,
+        description: {
+          advantage: req.body.advantage,
+          disadvantage: req.body.disadvantage,
+          salary: req.body.salary,
+          experience: req.body.experience,
+        },
+        image:
+          url ||
+          "https://res.cloudinary.com/huyan/image/upload/v1622477070/default-image_pf91dt.jpg",
+        accountId: req.body.username,
+      })
+      await employeeInfor.save()
+      next()
+    } else {
+      req.succes = false
+      next()
+    }
   } catch (err) {
     console.log(err)
-    res.sendStatus(408)
+    req.succes = false
+    next()
   }
 }
 

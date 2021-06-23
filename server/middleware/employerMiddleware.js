@@ -16,24 +16,37 @@ function getImgUrl(file) {
   })
 }
 
-const updateInfo = async (req, res, next) => {
+const changeAvatar = async (req, res) => {
   try {
-    const url = await getImgUrl(req.file)
-    const employerInfor = new Employer({
-      name: req.body.name,
-      address: req.body.address,
-      phone: req.body.phone,
-      mail: req.body.mail,
-      description: req.body.description,
-      image: url,
-      accountId: req.params.username,
-    })
-    await employerInfor.save()
-    next()
+    const imageUrl = await getImgUrl(req.file)
+    const choosenEmployer = await Employer.findOne({ accountId: req.params.username })
+    choosenEmployer.image = imageUrl
+    await choosenEmployer.save()
+    res.status(200).json({ image: imageUrl })
   } catch (err) {
     console.log(err)
     res.sendStatus(408)
   }
 }
 
-module.exports = { updateInfo }
+const signupInfo = async (req, res, next) => {
+  try {
+    if (req.success) {
+      const employerInfor = new Employer({
+        name: `${req.body.firstName} ${req.body.lastName}`,
+        address: `${req.body.district}, ${req.body.city}`,
+        phone: req.body.phone,
+        mail: req.body.mail,
+        accountId: req.body.username,
+      })
+      await employerInfor.save()
+      next()
+    } else next()
+  } catch (err) {
+    console.log(err)
+    req.success = false
+    next()
+  }
+}
+
+module.exports = { signupInfo, changeAvatar }

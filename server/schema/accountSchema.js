@@ -13,10 +13,6 @@ const accountSchema = mongoose.Schema({
   role: {
     type: String,
   },
-  signup: {
-    type: Boolean,
-    default: false,
-  },
 })
 
 const Account = mongoose.model("Account", accountSchema)

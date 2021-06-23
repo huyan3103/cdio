@@ -1,25 +1,33 @@
 import Employee from "./Employee"
-import "./item.css"
 import { employeeState } from "../../selector/employeeState"
+import { selectedState } from "../../atom/selectedState"
 import { useEffect, useState } from "react"
-import { useRecoilValue } from "recoil"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import Grid from "@material-ui/core/Grid"
+import Container from "@material-ui/core/Container"
 
 const Mainer = () => {
   const [employees, setEmployees] = useState([])
   const listEmployees = useRecoilValue(employeeState)
+  const setSelected = useSetRecoilState(selectedState)
+
   useEffect(() => {
+    setSelected("")
     setEmployees(listEmployees)
   }, [])
 
   return (
-    <div className="menu">
-      <div className="menu-item">
-        {employees &&
-          employees.map((item) => {
-            return <Employee key={item._id} {...item} />
-          })}
-      </div>
-    </div>
+    <Container component="main" maxWidth="lg">
+      <Grid conatiner style={{ paddingTop: "50px" }}>
+        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Danh sách giúp việc</h3>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+          {employees &&
+            employees.map((item) => {
+              return <Employee key={item._id} {...item} />
+            })}
+        </div>
+      </Grid>
+    </Container>
   )
 }
 

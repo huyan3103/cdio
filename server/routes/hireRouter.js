@@ -12,9 +12,11 @@ router.post("/", async (req, res) => {
     value[0].wanting = [
       ...value[0].wanting,
       {
+        id: Math.random(),
         employerID: req.body.employerID,
         employerName: req.body.employerName,
         employerAdd: req.body.employerAdd,
+        employerPhone: req.body.employerPhone,
       },
     ]
     value[1].hire = [

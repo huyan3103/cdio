@@ -1,7 +1,3 @@
-import { useState, useRef, useEffect } from "react"
-import { useHistory } from "react-router-dom"
-import axios from "axios"
-import { Link } from "react-router-dom"
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -10,67 +6,23 @@ import Grid from "@material-ui/core/Grid"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
-import { signupStyles } from "./signupStyles"
-import { loginState } from "../../atom/loginState"
-import { useSetRecoilState } from "recoil"
+import { signupeeStyles } from "./signupeeStyles"
+import { Link } from "react-router-dom"
 
-const Signup = () => {
-  const [input, setInput] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    password: "",
-    district: "",
-    city: "",
-    phone: "",
-    mail: "",
-  })
-  const [display, setDisplay] = useState(false)
-  const isMounted = useRef(true)
-  const history = useHistory()
-  const classes = signupStyles()
-  const setLoginState = useSetRecoilState(loginState)
-  const storage = window.sessionStorage
-
-  const changeInput = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const data = { ...input }
-    const response = await axios.post("http://localhost:5000/employer/signup/", data)
-    console.log(response.data)
-    if (response.data.success && isMounted.current) {
-      setLoginState(response.data.employer)
-      storage.setItem("login", JSON.stringify(response.data.employer))
-      history.push(`/employer/${input.username}`)
-    }
-    if (response.data.success === false) {
-      setDisplay(true)
-      setTimeout(() => {
-        setDisplay(false)
-      }, 1500)
-    }
-  }
-
-  useEffect(() => {
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
-
+const SignupeeBasic = (props) => {
+  const classes = signupeeStyles()
+  const { input, changeInput, setNext } = props
   return (
-    <Container component="main" maxWidth="xs" className={classes.signup}>
+    <Container component="main" maxWidth="xs" className={classes.signupee}>
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        <Avatar className={classes.icon}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          ĐĂNG KÝ
+          Đăng Ký Thành Nhân Viên
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate onSubmit={(e) => e.preventDefault()}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography>Họ Tên</Typography>
@@ -197,8 +149,9 @@ const Signup = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => setNext(false)}
           >
-            Đăng Nhập
+            Tiếp theo
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
@@ -216,4 +169,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignupeeBasic

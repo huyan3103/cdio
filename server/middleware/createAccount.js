@@ -21,7 +21,8 @@ const createAccount = async function (req, res, next) {
     }
   } catch (err) {
     console.log(err)
-    res.sendStatus(408)
+    req.success = false
+    next()
   }
 }
 

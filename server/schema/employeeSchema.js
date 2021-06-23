@@ -18,7 +18,12 @@ const employeeSchema = mongoose.Schema({
     required: true,
   },
   description: {
-    type: String,
+    type: {
+      advantage: { type: String },
+      disadvantage: { type: String },
+      salary: { type: String },
+      experience: { type: String },
+    },
   },
   image: {
     type: String,
@@ -33,11 +38,6 @@ const employeeSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-  },
-  signup: {
-    type: String,
-    enum: ["Finished", "Unfinished"],
-    default: "Unfinished",
   },
   wanting: {
     type: [Object],

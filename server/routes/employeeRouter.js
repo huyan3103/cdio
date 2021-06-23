@@ -8,8 +8,17 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 
 router.post("/signup", [upload.single("avatar"), createAccount, updateInfo], async (req, res) => {
-  const user = await Employee.findOne({ accountId: req.body.username })
-  res.status(200).json({ user, role: "employee" })
+  try {
+    if (req.success) {
+      const user = await Employee.findOne({ accountId: req.body.username })
+      res.status(200).json({ user, role: "employee" })
+    } else {
+      res.sendStatus(408)
+    }
+  } catch (err) {
+    console.log(err)
+    res.sendStatus(408)
+  }
 })
 
 router.post("/:username/information", [upload.single("avatar"), updateInfo], async (req, res) => {
