@@ -26,6 +26,7 @@ const Signup = () => {
     mail: "",
   })
   const [display, setDisplay] = useState(false)
+  const formRef = useRef()
   const isMounted = useRef(true)
   const history = useHistory()
   const classes = signupStyles()
@@ -38,19 +39,21 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = { ...input }
-    const response = await axios.post("http://localhost:5000/employer/signup/", data)
-    console.log(response.data)
-    if (response.data.success && isMounted.current) {
-      setLoginState(response.data.employer)
-      storage.setItem("login", JSON.stringify(response.data.employer))
-      history.push(`/employer/${input.username}`)
-    }
-    if (response.data.success === false) {
-      setDisplay(true)
-      setTimeout(() => {
-        setDisplay(false)
-      }, 1500)
+    if (formRef.current.reportValidity()) {
+      const data = { ...input }
+      const response = await axios.post("http://localhost:5000/employer/signup/", data)
+      console.log(response.data)
+      if (response.data.success && isMounted.current) {
+        setLoginState(response.data.employer)
+        storage.setItem("login", JSON.stringify(response.data.employer))
+        history.push(`/employer/${input.username}`)
+      }
+      if (response.data.success === false) {
+        setDisplay(true)
+        setTimeout(() => {
+          setDisplay(false)
+        }, 1500)
+      }
     }
   }
 
@@ -70,7 +73,7 @@ const Signup = () => {
         <Typography component="h1" variant="h5">
           ĐĂNG KÝ
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate onSubmit={handleSubmit} ref={formRef}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography>Họ Tên</Typography>
@@ -115,6 +118,7 @@ const Signup = () => {
                 value={input.username}
                 onChange={changeInput}
               />
+              {display && <span style={{ color: "red" }}>Tài khoản đã tồn tại</span>}
             </Grid>
             <Grid item xs={12}>
               <Typography>Mật Khẩu</Typography>
@@ -198,7 +202,7 @@ const Signup = () => {
             color="primary"
             className={classes.submit}
           >
-            Đăng Nhập
+            Đăng Ký
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

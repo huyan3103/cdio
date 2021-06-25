@@ -98,9 +98,9 @@ const Login = () => {
               onChange={changeInput}
             />
             {display ? (
-              <div>Tài khoản không tồn tại</div>
+              <div style={{ color: "red" }}>Tài khoản không tồn tại</div>
             ) : display2 ? (
-              <div>Sai mật khẩu hoặc tài khoản</div>
+              <div style={{ color: "red" }}>Sai mật khẩu hoặc tài khoản</div>
             ) : null}
             <Button
               type="submit"

@@ -14,7 +14,9 @@ const Mainee = () => {
   const { username } = useParams()
   const [avatar, setAvatar] = useState()
   const [login, setLogin] = useRecoilState(loginState)
-  const imageTemp = useRef()
+  const imageTemp = useRef(
+    "https://res.cloudinary.com/huyan/image/upload/v1622477070/default-image_pf91dt.jpg",
+  )
   const fileInput = useRef()
   const classes = maineeStyles()
   const storage = window.sessionStorage

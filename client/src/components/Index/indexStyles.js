@@ -7,17 +7,18 @@ export const indexStyles = makeStyles((theme) => ({
   image: {
     width: "300px",
     height: "350px",
-    marginLeft: "auto",
-    marginRight: "auto",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
     "& img": {
       height: "100%",
       width: "100%",
     },
   },
   contentindex: {
-    padding: "40px 35px",
+    padding: "40px 30px",
     lineHeight: "40px",
-
     "& a": {
       color: "white",
       backgroundColor: "rgba(27, 156, 242)",
@@ -25,6 +26,7 @@ export const indexStyles = makeStyles((theme) => ({
       padding: "15px 20px",
       borderRadius: "5px",
       boxShadow: "0px 0px 5px rgba(48,48,48,0.3)",
+      marginTop: "20px",
     },
     "& a:hover": {
       color: "white",

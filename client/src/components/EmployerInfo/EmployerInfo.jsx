@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
 import { employerStyles } from "./employerStyles"
+import TableEmployer from "./TableEmployer"
 
 const EmployerInfo = () => {
   const { username } = useParams()
@@ -44,7 +45,7 @@ const EmployerInfo = () => {
   }
 
   return (
-    <div style={{ paddingTop: "30px", height: "100vh" }}>
+    <div style={{ paddingTop: "30px", height: "fit-content" }}>
       <Container component="main" maxWidth="md" className={classes.container}>
         <CssBaseline />
         <div className={classes.paper}>
@@ -82,6 +83,7 @@ const EmployerInfo = () => {
             </div>
           </div>
         </div>
+
         <input
           type="file"
           ref={fileInput}
@@ -90,6 +92,14 @@ const EmployerInfo = () => {
           name="avatar"
           accept="images/*"
         ></input>
+      </Container>
+      <Container component="main" maxWidth="md" className={classes.listemployee}>
+        <div className={classes.hireheader}>
+          <Typography component="h2" variant="h5">
+            Danh Sách Người Đã Thuê
+          </Typography>
+          <TableEmployer />
+        </div>
       </Container>
     </div>
   )

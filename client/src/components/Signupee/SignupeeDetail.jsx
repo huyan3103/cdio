@@ -144,16 +144,17 @@ const SignupeeDetail = (props) => {
               </p>
             </Grid>
           </Grid>
+          <input
+            type="file"
+            ref={fileInput}
+            style={{ position: "absolute", top: "-100000000px" }}
+            onChange={handleChangeFile}
+            name="avatar"
+            accept="images/*"
+            required
+          ></input>
         </form>
       </div>
-      <input
-        type="file"
-        ref={fileInput}
-        style={{ position: "absolute", top: "-100000000px" }}
-        onChange={handleChangeFile}
-        name="avatar"
-        accept="images/*"
-      ></input>
     </Container>
   )
 }

@@ -9,6 +9,8 @@ const upload = multer({ storage: storage })
 
 router.post("/signup", [upload.single("avatar"), createAccount, updateInfo], async (req, res) => {
   try {
+    console.log(req.success)
+    console.log(req.body)
     if (req.success) {
       const user = await Employee.findOne({ accountId: req.body.username })
       res.status(200).json({ user, role: "employee" })

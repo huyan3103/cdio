@@ -61,4 +61,18 @@ export const employerStyles = makeStyles((theme) => ({
     color: "white",
     border: "none",
   },
+  hireheader: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    marginTop: theme.spacing(6),
+    padding: theme.spacing(3),
+  },
+  listemployee: {
+    backgroundColor: "white",
+    borderRadius: "5px",
+    boxShadow: "0px 0px 5px rgba(48,48,48,0.3)",
+  },
 }))

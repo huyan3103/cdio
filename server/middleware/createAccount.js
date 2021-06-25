@@ -3,6 +3,7 @@ const Account = require("../schema/accountSchema")
 
 const createAccount = async function (req, res, next) {
   try {
+    console.log(req.body)
     const existAccount = await Account.findOne({ username: req.body.username })
     if (existAccount) {
       req.success = false

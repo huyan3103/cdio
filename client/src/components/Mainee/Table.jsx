@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react"
 import { DataGrid } from "@material-ui/data-grid"
 import Button from "@material-ui/core/Button"
 import { loginState } from "../../atom/loginState"
 import { useRecoilValue } from "recoil"
 
-const renderAcceptButton = (params) => {
+const renderAcceptButton = () => {
   return (
     <strong>
       <Button
@@ -80,6 +79,7 @@ const columns = [
 
 function Table() {
   const user = useRecoilValue(loginState)
+
   return (
     <div style={{ height: 400, width: "100%", marginTop: "20px" }}>
       <DataGrid rows={user.wanting} columns={columns} pageSize={5} getRowId={(row) => row.id} />

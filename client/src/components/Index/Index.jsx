@@ -1,7 +1,7 @@
 import Container from "@material-ui/core/Container"
 import Grid from "@material-ui/core/Grid"
 import { Link } from "react-router-dom"
-import { indexStyles } from "./indexStles"
+import { indexStyles } from "./indexStyles"
 
 const Index = () => {
   const classes = indexStyles()
@@ -15,7 +15,7 @@ const Index = () => {
             alt=""
           ></img>
         </Grid>
-        <Grid md={6} xs={12} className={classes.contentindex}>
+        <Grid md={5} xs={12} className={classes.contentindex}>
           <h2>Tìm người giúp việc tại Hilfe</h2>
           <p>
             Bạn cần tìm người giúp việc để chăm lo nhà cửa và con cái bạn? Hãy đến Hifle - Nơi kết
@@ -32,7 +32,7 @@ const Index = () => {
             alt=""
           ></img>
         </Grid>
-        <Grid md={6} className={classes.contentindex}>
+        <Grid md={5} className={classes.contentindex}>
           <h2>Đăng ký giúp việc tại Hilfe</h2>
           <p>
             Bạn cần tìm việc để kiếm thu nhập? Hãy đến Hifle - Nơi kết nối bạn với những người tìm

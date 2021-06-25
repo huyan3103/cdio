@@ -5,6 +5,8 @@ export const footerStyles = makeStyles((theme) => ({
     backgroundColor: "#3f4547",
     padding: "10px 20px",
     color: "white",
+    paddingTop: "15px",
+    paddingBottom: "20px",
     [theme.breakpoints.down("md")]: {
       padding: "10px 0px",
     },
@@ -16,7 +18,10 @@ export const footerStyles = makeStyles((theme) => ({
     alignItems: "center",
     "& li": {
       listStyle: "none",
-      fontSize: "16px",
+      fontSize: "17px",
     },
+  },
+  list: {
+    marginTop: "15px",
   },
 }))

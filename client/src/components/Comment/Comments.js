@@ -1,15 +1,20 @@
 import CommentItem from "./CommentItem"
-import "./Comments.css"
+import Container from "@material-ui/core/Container"
+import { commentStyle } from "./commentStyles"
+
 const Comments = (props) => {
+  const { user } = props
+  const classes = commentStyle()
+
   return (
-    <div className="=comments">
-      <h3>Comment</h3>
-      <ul className="comment-list">
-        {props.comments.map((comment, index) => {
+    <Container maxWidth="md" className={classes.comment}>
+      <h3 className={classes.header}>Comment</h3>
+      <>
+        {user.map((comment, index) => {
           return <CommentItem name={comment.name} content={comment.content} key={index} />
         })}
-      </ul>
-    </div>
+      </>
+    </Container>
   )
 }
 

@@ -20,15 +20,18 @@ export const mainerStyles = makeStyles((theme) => ({
     borderRadius: "5px",
   },
   content: {
-    padding: "15px 15px",
+    padding: "20px 15px",
     fontSize: "18px",
+    lineHeight: "30px",
   },
   button: {
-    padding: "5px 15px",
+    marginTop: "20px",
+    padding: "10px 20px",
     borderRadius: "5px",
     backgroundColor: "rgba(9, 145, 235)",
     color: "white",
     border: "none",
     cursor: "default",
+    fontSize: "15px",
   },
 }))

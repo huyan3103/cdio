@@ -8,12 +8,22 @@ import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
 import { signupeeStyles } from "./signupeeStyles"
 import { Link } from "react-router-dom"
+import { useRef } from "react"
 
 const SignupeeBasic = (props) => {
   const classes = signupeeStyles()
   const { input, changeInput, setNext } = props
+  const formRef = useRef()
+
+  const handleNext = (e) => {
+    e.preventDefault()
+    if (formRef.current.reportValidity()) {
+      setNext(false)
+    }
+  }
+
   return (
-    <Container component="main" maxWidth="xs" className={classes.signupee}>
+    <Container component="main" maxWidth="xs" className={classes.signupee} onSubmit={handleNext}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.icon}>
@@ -22,7 +32,7 @@ const SignupeeBasic = (props) => {
         <Typography component="h1" variant="h5">
           Đăng Ký Thành Nhân Viên
         </Typography>
-        <form className={classes.form} noValidate onSubmit={(e) => e.preventDefault()}>
+        <form className={classes.form} noValidate ref={formRef}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography>Họ Tên</Typography>
@@ -149,7 +159,6 @@ const SignupeeBasic = (props) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => setNext(false)}
           >
             Tiếp theo
           </Button>

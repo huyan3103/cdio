@@ -19,7 +19,7 @@ const Mainer = () => {
   return (
     <Container component="main" maxWidth="lg">
       <Grid conatiner style={{ paddingTop: "50px" }}>
-        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>Danh sách giúp việc</h3>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Danh sách giúp việc</h2>
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
           {employees &&
             employees.map((item) => {

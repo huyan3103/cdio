@@ -49,6 +49,7 @@ export const maineeStyles = makeStyles((theme) => ({
   },
   accountinfodetail: {
     padding: "15px",
+    lineHeight: "35px",
     "& p": {
       fontSize: "17px",
     },

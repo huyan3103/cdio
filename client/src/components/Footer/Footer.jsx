@@ -6,25 +6,25 @@ const Footer = () => {
 
   return (
     <Grid container className={classes.footer}>
-      <Grid xs={4} className={classes.footercontent}>
-        <h5>Hỗ Trợ</h5>
-        <ul>
+      <Grid item xs={4} className={classes.footercontent}>
+        <h2>Hỗ Trợ</h2>
+        <ul className={classes.list}>
           <li>Bảo mật thông tin</li>
           <li>FAQs</li>
           <li>Chính sách chung</li>
         </ul>
       </Grid>
-      <Grid xs={4} className={classes.footercontent}>
-        <h5>Liên Hệ</h5>
-        <ul>
+      <Grid item xs={4} className={classes.footercontent}>
+        <h2>Liên Hệ</h2>
+        <ul className={classes.list}>
           <li>Email góp ý</li>
           <li>Hotline</li>
           <li>0964 444 777</li>
         </ul>
       </Grid>
-      <Grid xs={4} className={classes.footercontent}>
-        <h5>Về Chúng Tôi</h5>
-        <ul>
+      <Grid item xs={4} className={classes.footercontent}>
+        <h2>Về Chúng Tôi</h2>
+        <ul className={classes.list}>
           <li>Mục đích</li>
           <li>Tầm nhìn</li>
           <li>Về Hifle</li>

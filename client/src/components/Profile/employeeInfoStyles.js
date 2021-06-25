@@ -24,6 +24,7 @@ export const employeeInfoStyles = makeStyles((theme) => ({
   detailinfo: {
     padding: "10px 5px",
     fontSize: "18px",
+    lineHeight: "30px",
   },
   hirebutton: {
     marginLeft: "55px",

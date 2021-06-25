@@ -15,7 +15,7 @@ function App() {
     <Router>
       <>
         <Header />
-        <div style={{ backgroundColor: "#f0f3f7", paddingBottom: "30px" }}>
+        <div style={{ backgroundColor: "#f0f6ff", paddingBottom: "30px" }}>
           <Switch>
             <Route exact path="/">
               <Index />
@@ -32,7 +32,7 @@ function App() {
             <Route path="/employee/:username" component={Mainee} />
             <Route path="/list/:name" component={EmployeeInfo} />
             <Route path="/login" component={Login} />
-            <Route path="/employer/:username" component={EmployerInfo} />
+            <Route path="/:username/info" component={EmployerInfo} />
           </Switch>
         </div>
         <Footer />
